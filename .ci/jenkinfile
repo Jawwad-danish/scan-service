@@ -1,0 +1,96 @@
+pipeline {
+    agent any
+    //add environment variables for now  
+    environment { 
+        ALPHA_SCALE_DB_USER = credentials('db-user')
+        ALPHA_SCALE_DB_PASSWORD = credentials('db-password')
+        ALPHA_SCALE_DB_HOST = credentials('db-host')
+        ALPHA_SCALE_DB_PORT = credentials('db-port')
+        ALPHA_SCALE_DB_DATABASE = credentials('db-name')
+        USER_NOTF_API_BASE_URL='http://auxin-nlb-b85ce9777d2f280d.elb.us-west-2.amazonaws.com:8087'
+        SSO_API_BASE_URL='http://auxin-nlb-b85ce9777d2f280d.elb.us-west-2.amazonaws.com:8084'
+        USER_API_BASE_URL='http://auxin-nlb-b85ce9777d2f280d.elb.us-west-2.amazonaws.com:8086' 
+        JENKINS_USERNAME= credentials('jenkin-username')
+        JENKINS_PASSWORD= credentials('jenkins-password')
+        DEFECT_DOJO_USERNAME= credentials('defectdojo-username')
+        JENKINS_BASE_URL='http://auxin-nlb-b85ce9777d2f280d.elb.us-west-2.amazonaws.com:8082'
+        DEFECT_DOJO_PASSWORD= credentials('defectdojo-password')
+        DEFECT_DOJO_BASE_URL='http://auxin-nlb-b85ce9777d2f280d.elb.us-west-2.amazonaws.com:8080/api/v2'
+        AWS_ACCOUNT_ID = "432028988371"
+        AWS_DEFAULT_REGION = "us-west-2"
+        IMAGE_REPO_NAME =  "alphscale-dev-repo"
+        IMAGE_TAG = "latest"
+        REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
+    }
+    
+    stages { 
+        stage("Login into ECR") {
+            steps { 
+            
+               //login into ecr
+               sh 'docker login -u  AWS -p $(aws ecr get-login-password --region us-west-2) 432028988371.dkr.ecr.us-west-2.amazonaws.com'
+               echo 'Logged into AWS ECR'
+            }
+        }
+        stage("Setup") {
+            steps {
+            
+               //get the job name 
+               echo "starting the job ${env.JOB_NAME}"
+               
+               // get the current working directory
+               sh "pwd"
+               echo 'we are in working directory'
+               
+               //list down the content
+               sh "ls -lah"
+               echo 'listed down the content'
+               
+               // list down the running docker container
+               sh "docker ps -a"
+               
+               // stop the running service
+               //sh "docker kill scan-service"
+               
+               // remove the running service
+               //sh "docker rm scan-service"
+               
+               // remove the unused images 
+               sh "docker image prune -a -f"
+            }
+        }
+        stage("Build the service") {
+            steps {
+            
+               //build the docker image
+               sh "docker build . -t scan-service"
+               echo 'Built the Docker image'
+            }
+        }
+        stage("push the image to ECR"){
+            steps {
+            
+               //tag the repo
+               sh 'docker tag scan-service:latest 432028988371.dkr.ecr.us-west-2.amazonaws.com/alphscale-dev-repo:scan-service'
+               
+               //push the image to ECR
+               sh 'docker push 432028988371.dkr.ecr.us-west-2.amazonaws.com/alphscale-dev-repo:scan-service'
+               echo 'pushed the image to ECR'
+               
+               //delete the local built images
+               sh 'docker image prune -a -f'
+            }  
+         } 
+        stage("Deploy the service") { 
+            steps {                
+                //run the docker container
+                
+                //test the serivce is running 
+                sh "docker ps -a"
+                
+                echo 'The service is up and running' 
+                    
+            }
+        }
+    }
+}

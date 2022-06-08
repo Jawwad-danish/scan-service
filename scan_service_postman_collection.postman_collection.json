@@ -1,0 +1,447 @@
+{
+	"info": {
+		"_postman_id": "2d6b0006-7707-498c-a65e-d497edf91a6d",
+		"name": "scan_service_postman_collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "scan_profile",
+			"item": [
+				{
+					"name": "get scan_profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "127.0.0.1:5000/scan_profile/11"
+					},
+					"response": []
+				},
+				{
+					"name": "add scan_profile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"daily scan\",\r\n    \"description\":\"to scan regularly\",\r\n    \"scan_type_id\":17,\r\n    \"component_id\":10,\r\n    \"parameters\": [\r\n        {\r\n            \"name\":\"client_id\",\r\n            \"value\":\"xxx postman client id\"\r\n        },\r\n        {\r\n            \"name\":\"client_secret\",\r\n            \"value\":\"xxx postman client secret\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "127.0.0.1:5000/scan_profile"
+					},
+					"response": []
+				},
+				{
+					"name": "delete scan_profile",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "127.0.0.1:5000/scan_profile/27"
+					},
+					"response": []
+				},
+				{
+					"name": "update scan_profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"new update\",\r\n    \"description\":\"\",\r\n    \"scan_type_id\": 8,\r\n    \"parazmeters\": [\r\n        {\r\n            \"name\":\"client_id\",\r\n            \"value\":\"vvvvvvvvvvv55555\"\r\n        },\r\n        {\r\n            \"name\":\"client_secret1\",\r\n            \"value\":\"updated secret\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "127.0.0.1:5000/scan_profile/11"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "scan_type",
+			"item": [
+				{
+					"name": "get scan_all_types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "127.0.0.1:5000/scan_type"
+					},
+					"response": []
+				},
+				{
+					"name": "get scan_type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "127.0.0.1:5000/scan_type/7"
+					},
+					"response": []
+				},
+				{
+					"name": "add scan_type",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"postman scan type 2\",\r\n    \"description\":\"postman scan type\",\r\n    \"parameters\": [\r\n        {\r\n            \"name\":\"client_id\",\r\n            \"description\":\"vvvvvvvvvvv55555\"\r\n        },\r\n        {\r\n            \"name\":\"client_secret\",\r\n            \"description\":\"wertwre234523452354\"\r\n        },\r\n        {\r\n            \"name\":\"demo\",\r\n            \"description\":\"asdlfkjasdljflsda\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "127.0.0.1:5000/scan_type"
+					},
+					"response": []
+				},
+				{
+					"name": "update scan_type",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"postman scan type\",\r\n    \"description\":\"updated 2nd time\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "127.0.0.1:5000/scan_type/9"
+					},
+					"response": []
+				},
+				{
+					"name": "delete scan_type",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "127.0.0.1:5000/scan_type/8"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "scan_type_parameter",
+			"item": [
+				{
+					"name": "get all scan_type_parameters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "127.0.0.1:5000/scan_type/9/parameters"
+					},
+					"response": []
+				},
+				{
+					"name": "add scan_type_parameters",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"parameters\":[\r\n        {\r\n            \"name\":\"newly added 3\",\r\n            \"description\":\"newly added 3\"\r\n        },\r\n        {\r\n            \"name\":\"newly added 4\",\r\n            \"description\":\"newly added 4\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "127.0.0.1:5000/scan_type/9/parameters"
+					},
+					"response": []
+				},
+				{
+					"name": "update scan_type_parameter",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"updated from postman\",\r\n    \"description\":\"updated\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "127.0.0.1:5000/scan_type/parameters/23"
+					},
+					"response": []
+				},
+				{
+					"name": "delete scan_type_parameter",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "127.0.0.1:5000/scan_type/parameters/22"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "127.0.0.1:5000/product"
+					},
+					"response": []
+				},
+				{
+					"name": "get product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "127.0.0.1:5000/product/2"
+					},
+					"response": []
+				},
+				{
+					"name": "add product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"product postman\",\r\n    \"description\": \"product postman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "127.0.0.1:5000/product"
+					},
+					"response": []
+				},
+				{
+					"name": "update product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"product postman updated 1\",\r\n    \"description\": \"product postman updated again\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "127.0.0.1:5000/product/6"
+					},
+					"response": []
+				},
+				{
+					"name": "delete product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "127.0.0.1:5000/product/7"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "component",
+			"item": [
+				{
+					"name": "get all components",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "127.0.0.1:5000/component"
+					},
+					"response": []
+				},
+				{
+					"name": "get component",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "127.0.0.1:5000/component/4"
+					},
+					"response": []
+				},
+				{
+					"name": "add component",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"postman component 1\",\r\n    \"description\":\"postman component 1\",\r\n    \"product_id\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "127.0.0.1:5000/component"
+					},
+					"response": []
+				},
+				{
+					"name": "update component",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"postman component 1 updated\",\r\n    \"description\":\"postman component 1 updated\",\r\n    \"product_id\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "127.0.0.1:5000/component/6"
+					},
+					"response": []
+				},
+				{
+					"name": "delete component",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "127.0.0.1:5000/component/5"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "scan",
+			"item": [
+				{
+					"name": "setup scan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYUBleGFtcGxlLmNvbSIsImV4cCI6MTY0NjE0MDQzOSwiaWF0IjoxNjQ2MTM2ODM5fQ.4URC_sPsijTqHvJbJ1DUeUJkITMw9rDrhotuuDjeA_4"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhYUBleGFtcGxlLmNvbSIsImV4cCI6MTY0NTUyNjg2MiwiaWF0IjoxNjQ1NTIzMjYyfQ.LlRuXvIKozFlKChfmiBX9ORqq5Q4P0jHgEReQ2EVdsg",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"scan for 1-May\",\r\n    \"description\":\"scan for 1-May\",\r\n    \"schedule\":\"daily\",\r\n    \"scan_profile_id\":24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "127.0.0.1:5000/scan"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "finding",
+			"item": [
+				{
+					"name": "get product findings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/product/9/finding?limit=200&offset=0",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"product",
+								"9",
+								"finding"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "200"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get component findings",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "get scan findings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/scan/17/finding?limit=200&offset=0",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"scan",
+								"17",
+								"finding"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "200"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "health_check",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
