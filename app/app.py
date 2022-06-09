@@ -1,3 +1,7 @@
+# main app file flask server
+# created by MUHAMMAD JAWWAD DANISH
+
+
 from flask import Flask, jsonify, make_response, redirect, request
 import config
 from database import database
